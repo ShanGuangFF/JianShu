@@ -1,7 +1,9 @@
 package com.xupt.ff.JianShu.service.Impl;
 
 import com.xupt.ff.JianShu.dao.IUserDao;
+import com.xupt.ff.JianShu.dao.IUserInformationDao;
 import com.xupt.ff.JianShu.domain.user;
+import com.xupt.ff.JianShu.domain.userInformation;
 import com.xupt.ff.JianShu.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +21,20 @@ public class userServiceImpl implements IUserService {
     @Autowired
     private IUserDao userDao;
 
+    @Autowired
+    private IUserInformationDao informationDao;
 
+    //登录返回用户的所有信息
     @Override
-    public List<user> findAll() {
-        List<user> userList = userDao.findAll();
-        return userList;
+    public userInformation login(user loginUser) {
+        user user = userDao.login(loginUser);
+        if (user != null){
+            userInformation userInf = informationDao.findById(user.getUserId());
+            return userInf;
+        }
+        return null;
     }
+
 
     @Override
     public List<user> findUserFollow(int userId) {

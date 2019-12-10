@@ -21,7 +21,6 @@ public class testSpring {
     public void test(){
         ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         userServiceImpl userService = ac.getBean("userService", userServiceImpl.class);
-        List<user> userList = userService.findAll();
-        System.out.println(userList.get(0).getUserName());
+
     }
 }

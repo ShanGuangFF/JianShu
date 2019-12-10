@@ -21,7 +21,7 @@ public interface IUserDao {
 
     //登录
     @Select("select * from user where userName = #{userName} and userPassword = #{userPassword}")
-    user findOne(user loginUser);
+    user login(user loginUser);
 
     //根据用户id查询用户
     @Select("select * from user where userId = #{userId}")

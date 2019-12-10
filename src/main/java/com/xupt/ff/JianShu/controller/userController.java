@@ -26,8 +26,6 @@ public class userController {
 
     @RequestMapping("/login")
     public @ResponseBody user login(@RequestBody user loginUser){
-        List<user> users = userService.findAll();
-        System.out.println(users);
         return loginUser;
     }
 

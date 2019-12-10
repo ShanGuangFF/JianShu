@@ -1,6 +1,7 @@
 package com.xupt.ff.JianShu.service;
 
 import com.xupt.ff.JianShu.domain.user;
+import com.xupt.ff.JianShu.domain.userInformation;
 
 import java.util.List;
 
@@ -10,11 +11,7 @@ import java.util.List;
  */
 public interface IUserService {
 
-    /**
-     * @action 查询所用用户集合
-     * @return
-     */
-    public List<user> findAll();
+    userInformation login(user loginUser);
 
-    public List<user> findUserFollow(int userId);
+    List<user> findUserFollow(int userId);
 }
