@@ -24,5 +24,5 @@ public interface IComment {
 
     //建立新评论
     @Insert("insert into comment (commentContent,userId,articleId) values(#{commentContent},#{userId},#{articleId})")
-    int comment(comment comment);
+    int insert(comment comment);
 }

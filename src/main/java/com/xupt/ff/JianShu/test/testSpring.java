@@ -20,7 +20,10 @@ public class testSpring {
     @Test
     public void test(){
         ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-        userServiceImpl userService = ac.getBean("userService", userServiceImpl.class);
-
+        IUserService userService = ac.getBean("userService", userServiceImpl.class);
+        System.out.println(userService);
     }
+
+
+
 }

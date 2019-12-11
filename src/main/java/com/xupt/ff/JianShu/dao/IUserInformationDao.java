@@ -18,6 +18,8 @@ public interface IUserInformationDao {
 
     //注册新用户
     @Insert("insert into userInformation (name,sex,email,phoneNumber) values (#{name},#{sex},#{email},#{phoneNumber})")
-    int register(userInformation rU);
+    int insert(userInformation rU);
+
+
 
 }

@@ -49,11 +49,10 @@ public class testMybatis  {
     @Test
     public void testAC(){
         IArticleCollect collect = sqlSession.getMapper(IArticleCollect.class);
-        System.out.println(collect.collectNum(7));
         articleCollect articleCollect = new articleCollect();
         articleCollect.setArticleId(7);
         articleCollect.setUserId(7);
-        int i = collect.collect(articleCollect);
+        int i = collect.insert(articleCollect);
         System.out.println(i);
     }
 }

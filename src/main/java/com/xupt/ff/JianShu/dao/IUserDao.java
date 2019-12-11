@@ -29,5 +29,5 @@ public interface IUserDao {
 
     //注册用户名和密码
     @Insert("insert into user (userName,userPassword) value (#{userName},#{userPassword})")
-    int register(user registerUser);
+    int insert(user registerUser);
 }

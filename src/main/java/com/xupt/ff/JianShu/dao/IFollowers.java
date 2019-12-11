@@ -16,9 +16,7 @@ import java.util.List;
 @Repository
 public interface IFollowers {
 
-    //根据用户id查询所有粉丝
-    @Select("select * from followers where userId = #{userId}")
-    List<user> findFollowers(int userId);
+
 
     //根据用户id查询所有关注
     @Select("select * from followers where fanId = #{fanId}")
@@ -26,9 +24,17 @@ public interface IFollowers {
 
     //关注
     @Insert("insert into followers (userId,fanId,flag) values(#{userId},#{fanId},#{flag})")
-    int focus(followers followers);
+    int insert(followers followers);
 
     //取关
     @Delete("delete from followers where userId = #{userId} and fanId = #{fanId}")
-    int unFocus(followers followers);
+    int delete(followers followers);
+
+    //查询所有粉丝的信息
+    @Select("SELECT u.* FROM followers f INNER JOIN userInformation u ON f.fanId = u.id WHERE userId = #{userId}")
+    List<user> findFollowers(int userId);
+
+    //查询所有关注的信息
+    @Select("SELECT u.* FROM followers f INNER JOIN userInformation u ON f.fanId = u.id WHERE fanId = #{fanId}")
+    List<user> findFocusInf(int fanId);
 }

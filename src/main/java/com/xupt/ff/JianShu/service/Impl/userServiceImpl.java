@@ -1,5 +1,6 @@
 package com.xupt.ff.JianShu.service.Impl;
 
+import com.xupt.ff.JianShu.dao.IFollowers;
 import com.xupt.ff.JianShu.dao.IUserDao;
 import com.xupt.ff.JianShu.dao.IUserInformationDao;
 import com.xupt.ff.JianShu.domain.user;
@@ -24,6 +25,9 @@ public class userServiceImpl implements IUserService {
     @Autowired
     private IUserInformationDao informationDao;
 
+    @Autowired
+    private IFollowers followerDao;
+
     //登录返回用户的所有信息
     @Override
     public userInformation login(user loginUser) {
@@ -33,11 +37,14 @@ public class userServiceImpl implements IUserService {
             return userInf;
         }
         return null;
+
     }
 
 
+    //粉丝信息
     @Override
     public List<user> findUserFollow(int userId) {
-        return null;
+        List<user> followers = followerDao.findFollowers(userId);
+        return followers;
     }
 }

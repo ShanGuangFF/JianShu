@@ -25,5 +25,5 @@ public interface IArticle {
 
     //建立新文章
     @Insert("insert into article (articleHeading,articleContent,userId) values(#{articleHeading},#{articleContent},#{userId})")
-    int writeArticle(article article);
+    int insert(article article);
 }
