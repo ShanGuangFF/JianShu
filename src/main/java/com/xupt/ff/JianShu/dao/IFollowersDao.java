@@ -14,7 +14,7 @@ import java.util.List;
  * @creat 2019-12-2019/12/9-23:13
  */
 @Repository
-public interface IFollowers {
+public interface IFollowersDao {
 
 
 

@@ -1,6 +1,6 @@
 package com.xupt.ff.JianShu.test;
 
-import com.xupt.ff.JianShu.dao.IArticleCollect;
+import com.xupt.ff.JianShu.dao.IArticleCollectDao;
 import com.xupt.ff.JianShu.dao.IUserDao;
 import com.xupt.ff.JianShu.dao.IUserInformationDao;
 import com.xupt.ff.JianShu.domain.articleCollect;
@@ -48,7 +48,7 @@ public class testMybatis  {
 
     @Test
     public void testAC(){
-        IArticleCollect collect = sqlSession.getMapper(IArticleCollect.class);
+        IArticleCollectDao collect = sqlSession.getMapper(IArticleCollectDao.class);
         articleCollect articleCollect = new articleCollect();
         articleCollect.setArticleId(7);
         articleCollect.setUserId(7);

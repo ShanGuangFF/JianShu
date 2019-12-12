@@ -1,7 +1,9 @@
 package com.xupt.ff.JianShu.controller;
 
 
+import com.xupt.ff.JianShu.dao.IUserInformationDao;
 import com.xupt.ff.JianShu.domain.user;
+import com.xupt.ff.JianShu.domain.userInformation;
 import com.xupt.ff.JianShu.service.IUserService;
 import com.xupt.ff.JianShu.service.Impl.userServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,16 @@ public class userController {
     @Autowired
     private IUserService userService;
 
+
+
     @RequestMapping("/login")
-    public @ResponseBody user login(@RequestBody user loginUser){
-        return loginUser;
+    public @ResponseBody userInformation login(@RequestBody user loginUser){
+        userInformation userInformation = userService.login(loginUser);
+        return userInformation;
     }
 
-
+    @RequestMapping("/register")
+    public void register(@RequestBody userInformation information){
+        userService.register(information);
+    }
 }

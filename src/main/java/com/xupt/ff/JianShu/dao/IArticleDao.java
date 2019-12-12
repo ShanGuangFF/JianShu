@@ -12,11 +12,11 @@ import java.util.List;
  * @creat 2019-12-2019/12/5-9:03
  */
 @Repository
-public interface IArticle {
+public interface IArticleDao {
 
 
     //根据用户ID查询所有属于他的文章
-    @Select("select * from article where id = #{userId}")
+    @Select("select * from article where userId = #{userId}")
     List<article> myArticle(int userId);
 
     //使用连接查询用户收藏的文章

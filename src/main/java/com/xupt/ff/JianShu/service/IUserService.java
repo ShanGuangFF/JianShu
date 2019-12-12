@@ -14,4 +14,8 @@ public interface IUserService {
     userInformation login(user loginUser);
 
     List<user> findUserFollow(int userId);
+
+    int register(userInformation user);
+
+    List<user> findUserFocus(int userId);
 }

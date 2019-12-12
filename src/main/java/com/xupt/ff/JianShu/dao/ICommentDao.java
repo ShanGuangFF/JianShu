@@ -12,7 +12,7 @@ import java.util.List;
  * @creat 2019-12-2019/12/9-1:50
  */
 @Repository
-public interface IComment {
+public interface ICommentDao {
 
     //查询文章所有的评论
     @Select("select * from comment where articleId = #{articleId}")

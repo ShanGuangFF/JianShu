@@ -1,6 +1,7 @@
 package com.xupt.ff.JianShu.service.Impl;
 
-import com.xupt.ff.JianShu.dao.IFollowers;
+import com.xupt.ff.JianShu.dao.IFollowersDao;
+import com.xupt.ff.JianShu.dao.IImgDao;
 import com.xupt.ff.JianShu.dao.IUserDao;
 import com.xupt.ff.JianShu.dao.IUserInformationDao;
 import com.xupt.ff.JianShu.domain.user;
@@ -26,7 +27,10 @@ public class userServiceImpl implements IUserService {
     private IUserInformationDao informationDao;
 
     @Autowired
-    private IFollowers followerDao;
+    private IFollowersDao followerDao;
+
+    @Autowired
+    private IImgDao imgDao;
 
     //登录返回用户的所有信息
     @Override
@@ -46,5 +50,18 @@ public class userServiceImpl implements IUserService {
     public List<user> findUserFollow(int userId) {
         List<user> followers = followerDao.findFollowers(userId);
         return followers;
+    }
+
+    //注册
+    public int register(userInformation user){
+        informationDao.insert(user);
+        imgDao.initUserPic(user.getId());
+        return 1;
+    }
+
+    //关注列表
+    public List<user> findUserFocus(int userId){
+        List<user> focus = followerDao.findFocus(userId);
+        return focus;
     }
 }
