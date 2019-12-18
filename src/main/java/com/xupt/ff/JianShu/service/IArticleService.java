@@ -1,8 +1,9 @@
 package com.xupt.ff.JianShu.service;
 
 import com.xupt.ff.JianShu.domain.article;
-import com.xupt.ff.JianShu.domain.returnType.collectType;
-import org.springframework.stereotype.Service;
+import com.xupt.ff.JianShu.domain.comment;
+import com.xupt.ff.JianShu.domain.returnType.articleReturn;
+
 
 import java.util.List;
 
@@ -14,9 +15,13 @@ import java.util.List;
 
 public interface IArticleService {
 
-    List<article> myArticle(int userId);
+    articleReturn myArticle(int userId);
 
-    List<collectType> myCollect(int userId);
+    articleReturn myCollect(int userId);
 
+    articleReturn findAll();
 
+    articleReturn writeArticle(article article);
+
+    articleReturn writeComment(comment comment);
 }

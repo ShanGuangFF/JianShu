@@ -23,9 +23,10 @@ public class imgController {
     private IImgService imgService;
 
     @RequestMapping("/userPicUpload")
-    public void userPicUpload(HttpServletRequest req, MultipartFile upload, @RequestBody int userId) throws IOException {
+    public void userPicUpload(HttpServletRequest req, MultipartFile upload) throws IOException {
         String path = req.getSession().getServletContext().getRealPath("/uploads");
-        imgService.saveUserPic(upload,path,userId);
+        System.out.println(path);
+        //imgService.saveUserPic(upload,path,userId);
     }
 
     @RequestMapping("/articleUpload")

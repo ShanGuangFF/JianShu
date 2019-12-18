@@ -1,12 +1,12 @@
 package com.xupt.ff.JianShu.test;
 
-import com.xupt.ff.JianShu.dao.IArticleCollectDao;
-import com.xupt.ff.JianShu.dao.IUserDao;
-import com.xupt.ff.JianShu.dao.IUserInformationDao;
+import com.xupt.ff.JianShu.dao.*;
+import com.xupt.ff.JianShu.domain.Img;
 import com.xupt.ff.JianShu.domain.articleCollect;
 import com.xupt.ff.JianShu.domain.user;
 import com.xupt.ff.JianShu.domain.userInformation;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author cc_ff
@@ -48,11 +49,20 @@ public class testMybatis  {
 
     @Test
     public void testAC(){
-        IArticleCollectDao collect = sqlSession.getMapper(IArticleCollectDao.class);
-        articleCollect articleCollect = new articleCollect();
-        articleCollect.setArticleId(7);
-        articleCollect.setUserId(7);
-        int i = collect.insert(articleCollect);
+        IFollowersDao followersDao = sqlSession.getMapper(IFollowersDao.class);
+        List<userInformation> focus = followersDao.findFocusInf(2);
+        System.out.println(focus);
+    }
+
+    @Test
+    public void testImg(){
+
+        Img img = new Img();
+        img.setUserId(1);
+        img.setImagePath("e7c4512142ccb38fc1a39f17a517_5a126b4a4a7c9.jpg");
+
+        IImgDao iImgDao = sqlSession.getMapper(IImgDao.class);
+        int i = iImgDao.initUserPic(img);
         System.out.println(i);
     }
 }

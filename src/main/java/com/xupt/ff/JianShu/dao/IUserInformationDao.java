@@ -17,7 +17,7 @@ public interface IUserInformationDao {
     userInformation findById(int id);
 
     //注册新用户
-    @Insert("insert into userInformation (name,sex,email,phoneNumber) values (#{name},#{sex},#{email},#{phoneNumber})")
+    @Insert("insert into userInformation (id,name,sex,email,phoneNumber) values (#{id},#{name},#{sex},#{email},#{phoneNumber})")
     int insert(userInformation rU);
 
 

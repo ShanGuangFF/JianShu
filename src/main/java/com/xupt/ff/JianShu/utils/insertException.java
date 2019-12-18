@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class insertException {
 
-    @Pointcut("execution(* com.xupt.ff.JianShu.service.*.*(..))")
+    @Pointcut("execution(* com.xupt.ff.JianShu.service.Impl.*(..))")
     private void pt1(){}
 
     @Pointcut()
@@ -26,7 +26,7 @@ public class insertException {
             rtValue = pjp.proceed(args);//明确调用业务层方法（切入点方法）
             return rtValue;
         }catch (Throwable t){
-            return "一定是你错了，不是我错了";
+            return -1;
         }finally {
 
         }

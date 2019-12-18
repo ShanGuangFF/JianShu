@@ -1,5 +1,9 @@
 package com.xupt.ff.JianShu.service;
 
+import com.xupt.ff.JianShu.domain.followers;
+import com.xupt.ff.JianShu.domain.requestType.userRegister;
+import com.xupt.ff.JianShu.domain.returnType.userInf;
+import com.xupt.ff.JianShu.domain.returnType.userReturn;
 import com.xupt.ff.JianShu.domain.user;
 import com.xupt.ff.JianShu.domain.userInformation;
 
@@ -11,11 +15,13 @@ import java.util.List;
  */
 public interface IUserService {
 
-    userInformation login(user loginUser);
+    userReturn login(user loginUser);
 
-    List<user> findUserFollow(int userId);
+    userReturn findUserFollow(int userId);
 
-    int register(userInformation user);
+    userReturn register(userRegister userRegister);
 
-    List<user> findUserFocus(int userId);
+    userReturn findUserFocus(int userId);
+
+    boolean focus(int userId,int fanId);
 }

@@ -23,7 +23,7 @@ public class imgServiceImpl implements IImgService {
     private IImgDao imgDao;
 
     @Override
-    public int saveUserPic(MultipartFile upload, String path,int userId) throws IOException {
+    public int saveUserPic(MultipartFile upload,String path,int userId) throws IOException {
         File file = new File(path);
         if(!file.exists()){
             file.mkdir();
@@ -35,6 +35,8 @@ public class imgServiceImpl implements IImgService {
         Img img = new Img();
         img.setImagePath(filename);
         img.setUserId(userId);
+
+
         imgDao.saveUserPic(img);
 
         return 1;

@@ -1,9 +1,7 @@
 package com.xupt.ff.JianShu.dao;
 
 import com.xupt.ff.JianShu.domain.Img;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -22,8 +20,8 @@ public interface IImgDao {
     @Insert("insert into image (imagePath,userId) values (#{imagePath},#{articleId})")
     int saveArticlePic(Img img);
 
-    @Insert("insert into image (imagePath,userId) values (4e80e7c4512142ccb38fc1a39f17a517_5a126b4a4a7c9.jpg,#{userId})")
-    int initUserPic(int userId);
+    @Insert("insert into image (imagePath,userId) values (#{imagePath},#{userId})")
+    int initUserPic(Img img);
 
     @Select("select * from image where userId = #{userId}")
     Img userPic(int userId);

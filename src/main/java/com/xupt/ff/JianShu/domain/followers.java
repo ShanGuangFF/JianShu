@@ -8,7 +8,7 @@ public class followers {
     private int followerId;
     private int userId;
     private int fanId;
-    private int flag;
+    private int flag = 0;
 
     public int getFollowerId() {
         return followerId;

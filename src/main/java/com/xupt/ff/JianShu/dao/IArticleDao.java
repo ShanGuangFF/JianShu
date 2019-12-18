@@ -26,4 +26,7 @@ public interface IArticleDao {
     //建立新文章
     @Insert("insert into article (articleHeading,articleContent,userId) values(#{articleHeading},#{articleContent},#{userId})")
     int insert(article article);
+
+    @Select("select * from article")
+    List<article> findAll();
 }

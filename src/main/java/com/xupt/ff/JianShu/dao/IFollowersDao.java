@@ -2,6 +2,7 @@ package com.xupt.ff.JianShu.dao;
 
 import com.xupt.ff.JianShu.domain.followers;
 import com.xupt.ff.JianShu.domain.user;
+import com.xupt.ff.JianShu.domain.userInformation;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -22,6 +23,9 @@ public interface IFollowersDao {
     @Select("select * from followers where fanId = #{fanId}")
     List<user> findFocus(int fanId);
 
+    @Select("select * from followers where fanId = #{fanId} and userId = #{userId}")
+    user findOneFocus(followers followers);
+
     //关注
     @Insert("insert into followers (userId,fanId,flag) values(#{userId},#{fanId},#{flag})")
     int insert(followers followers);
@@ -32,9 +36,9 @@ public interface IFollowersDao {
 
     //查询所有粉丝的信息
     @Select("SELECT u.* FROM followers f INNER JOIN userInformation u ON f.fanId = u.id WHERE userId = #{userId}")
-    List<user> findFollowers(int userId);
+    List<userInformation> findFollowers(int userId);
 
     //查询所有关注的信息
-    @Select("SELECT u.* FROM followers f INNER JOIN userInformation u ON f.fanId = u.id WHERE fanId = #{fanId}")
-    List<user> findFocusInf(int fanId);
+    @Select("SELECT u.* FROM followers f INNER JOIN userInformation u ON f.userId = u.id WHERE fanId = #{fanId}")
+    List<userInformation> findFocusInf(int fanId);
 }
